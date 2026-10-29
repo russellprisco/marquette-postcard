@@ -300,6 +300,7 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
 .exc{font-size:14px;color:var(--muted);min-width:56px;text-align:center}
 .ex-note{margin-top:16px;font-size:14px;color:var(--muted)}
 @media (min-width:861px){.ext[data-shape="std"] .exs{--w:calc(50% - 6px)}.ext[data-shape="mid"] .exs{--w:calc(33.3% - 8px)}.ext[data-shape="tall"] .exs{--w:calc(25% - 9px)}.ext[data-shape="wide"] .exs{--w:calc(50% - 6px)}}
+.mockpair{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.mockpair figure{margin:0;min-width:0}.mockpair .frame{margin-top:0;min-height:0}.mockpair figcaption{margin-top:6px;font-size:14px;color:var(--muted)}@media (max-width:560px){.mockpair{grid-template-columns:1fr}}
 </style>
 
 <div class="deadline band" id="dl">
@@ -351,12 +352,11 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
   <div class="wrap">
     <p class="label">See the card</p>
     <h2>This is what lands in the mailbox</h2>
-    <p class="lead">The holiday card will be an 11x14 or a 9x12, depending on how many advertisers sign up. Either one is enormous and stands out in the mailbox over any other piece of mail. Tap the picture to open it full screen.</p>
-    <button class="frame" type="button" data-expand aria-label="Marquette card mockup">
-      <!--MOCKUP-->
-      <span class="ph"><b>Marquette card mockup</b><span>Your mockup image goes here</span></span>
-      <!--/MOCKUP-->
-    </button>
+    <p class="lead">The holiday card will be an 11x14 or a 9x12, depending on how many advertisers sign up. Either one is enormous and stands out in the mailbox over any other piece of mail. Sample layout, with real ads. Tap a side to open it full screen.</p>
+    <div class="mockpair">
+      <figure><button class="frame has-img" type="button" data-expand aria-label="Marquette holiday card mockup, front"><img src="img/mockup-front.jpg" alt="Marquette holiday card mockup, front side" width="1375" height="1750"></button><figcaption>Front</figcaption></figure>
+      <figure><button class="frame has-img" type="button" data-expand aria-label="Marquette holiday card mockup, mailing side"><img src="img/mockup-back.jpg" alt="Marquette holiday card mockup, mailing side" width="1375" height="1750" loading="lazy"></button><figcaption>Back (mailing side)</figcaption></figure>
+    </div>
   </div>
 </section>
 
