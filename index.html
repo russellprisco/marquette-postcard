@@ -272,6 +272,7 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
   .hero .wrap { padding-block: 32px 30px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+.mbox{margin-top:28px;max-width:360px}.mbox h3{font-size:22px;text-transform:uppercase;color:var(--lake);margin-bottom:10px}.mbox video{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#000}
 </style>
 
 <div class="deadline band" id="dl">
@@ -500,11 +501,16 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
     <h2>Cards we have mailed together</h2>
     <p class="lead">Five co-op postcards mailed across Houghton County, and the sixth is on the way. Tap a card to see it full size.</p>
     <div class="gallery">
-      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Past card"><!--PAST1--><span class="ph"><b>Past card</b><span>Front</span></span><!--/PAST1--></button><figcaption>Houghton County card, front</figcaption></figure>
-      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Past card back"><!--PAST2--><span class="ph"><b>Past card</b><span>Back</span></span><!--/PAST2--></button><figcaption>Houghton County card, back</figcaption></figure>
-      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Summer card"><!--PAST3--><span class="ph"><b>Summer card</b><span>Photo</span></span><!--/PAST3--></button><figcaption>Summer card</figcaption></figure>
-      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Fall card"><!--PAST4--><span class="ph"><b>Fall card</b><span>Photo</span></span><!--/PAST4--></button><figcaption>Fall card</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Fall card, front"><img src="img/fall-card-front.jpg" alt="Fall card, front" loading="lazy"></button><figcaption>Fall card, front</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Fall card, back"><img src="img/fall-card-back.jpg" alt="Fall card, back" loading="lazy"></button><figcaption>Fall card, back</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Summer card"><img src="img/summer-card.jpg" alt="Summer card" loading="lazy"></button><figcaption>Summer card</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Holiday card"><img src="img/holiday-card.jpg" alt="Holiday card" loading="lazy"></button><figcaption>Holiday card</figcaption></figure>
     </div>
+    <div class="mbox">
+      <h3>This is what it looks like in the mailbox</h3>
+      <video controls playsinline preload="metadata" poster="img/mailbox-poster.jpg" aria-label="A Support the UP card in a mailbox"><source src="img/mailbox.mp4" type="video/mp4"></video>
+    </div>
+
   </div>
 </section>
 
@@ -548,7 +554,7 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
     <p class="label">Who is behind it</p>
     <h2>About Russell</h2>
     <div class="about-row">
-      <div class="photo-slot"><!--PHOTO--><span>Your photo</span><!--/PHOTO--></div>
+      <div class="photo-slot"><img src="img/russell.jpg" alt="Russell with his son" loading="lazy"></div>
       <div class="about">
         <p>I'm Russell. I run Support the UP, a local co-op postcard business based in the Houghton area. We have mailed five postcards across Houghton County, and the sixth, our holiday card, is in the works.</p>
         <p>Marquette is our next stop, and I'm doing this one the same way: you get a free mockup, one business per category, and I handle the design, printing, postage and post office paperwork. Texting me is the fastest way to reach me.</p>
