@@ -301,6 +301,15 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
 .ex-note{margin-top:16px;font-size:14px;color:var(--muted)}
 @media (min-width:861px){.ext[data-shape="std"] .exs{--w:calc(50% - 6px)}.ext[data-shape="mid"] .exs{--w:calc(33.3% - 8px)}.ext[data-shape="tall"] .exs{--w:calc(25% - 9px)}.ext[data-shape="wide"] .exs{--w:calc(50% - 6px)}}
 .mockpair{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.mockpair figure{margin:0;min-width:0}.mockpair .frame{margin-top:0;min-height:0;border-radius:0;overflow:visible;border:1px solid var(--line)}.mockpair .frame img{width:100%;height:auto;max-height:none;object-fit:fill;border-radius:0}.mockpair figcaption{margin-top:6px;font-size:14px;color:var(--muted)}@media (max-width:560px){.mockpair{grid-template-columns:1fr}}
+.open .wmylist{gap:10px}.wmy{display:grid;grid-template-columns:1fr auto;grid-template-areas:"l p" "h p";gap:0 16px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.wmy .wl{grid-area:l;font-family:var(--font-display);font-weight:700;font-size:20px;text-transform:uppercase;color:var(--lake);letter-spacing:.03em}
+.wmy .wh{grid-area:h;font-family:var(--font-display);font-weight:700;font-size:40px;line-height:1;color:var(--ink)}
+.wmy .wh small{font-family:var(--font-body);font-size:16px;font-weight:700;color:var(--muted)}
+.wmy .wp{grid-area:p;text-align:right;display:flex;flex-direction:column;align-items:flex-end;justify-content:center}
+.wmy .wp b{font-family:var(--font-display);font-weight:700;font-size:44px;line-height:1;color:var(--red)}
+.wmy .wp s{font-size:16px;font-weight:700;color:var(--muted)}
+.wmy .wl,.wmy .wh{white-space:nowrap}@media (max-width:480px){.wmy{padding:12px}.wmy .wl{font-size:18px}.wmy .wh{font-size:34px}.wmy .wh small{font-size:14px}.wmy .wp b{font-size:38px}}
+.bestad{margin:0;flex:1 1 100%;min-width:0;max-width:640px}.bestad.tallad{flex:0 1 300px}.bestad img{display:block;width:100%;height:auto}.bestad figcaption{margin-top:6px;font-size:14px;color:var(--muted)}.size .visual .bestad{align-self:flex-start}
 </style>
 
 <div class="deadline band" id="dl">
@@ -372,12 +381,12 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
       </div>
       <div>
         <h3>What it means for you</h3>
-        <ul>
-          <li><b>Coupon ad: $300</b> <span>(3&cent; per household) instead of $500</span></li>
-          <li><b>Single ad: $500</b> <span>(5&cent; per household) instead of $700</span></li>
-          <li><b>Double ad: $1,000</b> <span>(10&cent; per household) instead of $1,200</span></li>
-          <li><b>Quadruple ad: $2,200</b> <span>(22&cent; per household) instead of $2,400</span></li>
-        </ul>
+        <ul class="wmylist">
+          <li class="wmy"><span class="wl">Coupon ad</span><span class="wh">3&cent;<small> per household</small></span><span class="wp"><b>$300</b><s>$500</s></span></li>
+          <li class="wmy"><span class="wl">Single ad</span><span class="wh">5&cent;<small> per household</small></span><span class="wp"><b>$500</b><s>$700</s></span></li>
+          <li class="wmy"><span class="wl">Double ad</span><span class="wh">10&cent;<small> per household</small></span><span class="wp"><b>$1,000</b><s>$1,200</s></span></li>
+          <li class="wmy"><span class="wl">Quadruple ad</span><span class="wh">22&cent;<small> per household</small></span><span class="wp"><b>$2,200</b><s>$2,400</s></span></li>
+          </ul>
       </div>
     </div>
   </div>
@@ -404,10 +413,8 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
         </div>
         <div class="visual">
           <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 1;grid-row:3/span 1;background:var(--c-coupon)"></div></div><div class="cap">Where a coupon sits (example layout)</div></div>
-          <div class="mockwrap">
-            <div class="ad coupon"><div class="tag">Coupon</div><div class="body"><div class="nm">Your Business</div><div class="off">10% OFF</div><div class="ln">Show this card at checkout.</div></div></div>
-            <div class="mockcap">Sample coupon, 3.5" x 1.8"</div>
-          </div>
+          <figure class="bestad"><button type="button" class="exb" data-expand aria-label="Open La Cantina buy one get one half off coupon full size"><img src="img/ads/coupon-la-cantina-bogo.webp" alt="La Cantina buy one get one half off coupon" loading="lazy"></button><figcaption>Real coupon ad, 3.5" x 1.8"</figcaption></figure>
+          
         </div>
       </article>
 
@@ -422,10 +429,8 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
         </div>
         <div class="visual">
           <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:2/span 1;grid-row:3/span 1;background:var(--c-single)"></div></div><div class="cap">Where a single sits (example layout)</div></div>
-          <div class="mockwrap">
-            <div class="ad single"><div class="tag">Single ad</div><div class="body"><div class="row"><div class="logo">YOUR<br>LOGO</div><div><div class="nm">Your Business</div><div class="ln">What you do, in one line.</div></div></div><div class="ph2">(906) 000-0000</div></div></div>
-            <div class="mockcap">Sample business card ad, 3.5" x 1.8"</div>
-          </div>
+          <figure class="bestad"><button type="button" class="exb" data-expand aria-label="Open Uncles Local Diner single ad full size"><img src="img/ads/single-uncles-diner.webp" alt="Uncles Local Diner single ad" loading="lazy"></button><figcaption>Real single ad, 3.5" x 1.8"</figcaption></figure>
+          
         </div>
       </article>
 
@@ -441,14 +446,9 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
         <div class="visual">
           <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 2;grid-row:3/span 1;background:var(--c-double)"></div></div><div class="cap">Wide double (example layout)</div></div>
           <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 1;grid-row:3/span 2;background:var(--c-double)"></div></div><div class="cap">Tall double (example layout)</div></div>
-          <div class="mockwrap">
-            <div class="ad dh"><div class="tag">Double ad, horizontal</div><div class="body"><div class="row"><div class="logo">YOUR<br>LOGO</div><div><div class="nm">Your Business Name</div><div class="ln">Your services, your promise and your offer, with room to say more.</div></div><div class="off" style="margin-left:auto">$25 OFF</div></div><div class="ph2">(906) 000-0000 &middot; yourbusiness.com</div></div></div>
-            <div class="mockcap">Horizontal, 7.2" x 1.8"</div>
-          </div>
-          <div class="mockwrap">
-            <div class="ad dv"><div class="tag">Double ad, vertical</div><div class="body"><div class="logo">YOUR LOGO</div><div class="nm">Your Business</div><div class="ln">Room for a photo, a short list of services and a strong offer.</div><div class="off">$25 OFF</div><div class="ph2">(906) 000-0000</div></div></div>
-            <div class="mockcap">Vertical, 3.5" x 3.8"</div>
-          </div>
+          <figure class="bestad"><button type="button" class="exb" data-expand aria-label="Open Fresh Coast Aesthetics wide double ad full size"><img src="img/ads/double-fresh-coast-holiday.webp" alt="Fresh Coast Aesthetics wide double ad" loading="lazy"></button><figcaption>Real wide double, 7.2" x 1.8"</figcaption></figure>
+          <figure class="bestad tallad"><button type="button" class="exb" data-expand aria-label="Open The Forge Food Smith tall double ad full size"><img src="img/ads/double-the-forge.webp" alt="The Forge Food Smith tall double ad" loading="lazy"></button><figcaption>Real tall double, 3.5" x 3.8"</figcaption></figure>
+          
         </div>
       </article>
 
@@ -463,10 +463,8 @@ footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
         </div>
         <div class="visual">
           <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 2;grid-row:3/span 2;background:var(--c-quad)"></div></div><div class="cap">Where a quadruple sits (example layout)</div></div>
-          <div class="mockwrap">
-            <div class="ad quad"><div class="tag">Quadruple ad</div><div class="body"><div class="row"><div class="logo">YOUR<br>LOGO</div><div><div class="nm">Your Business Name</div><div class="ln">The biggest ad on the card, with space for photos, services and an offer.</div></div></div><div class="row"><div class="photo">Your photo</div><div class="off">$50 OFF</div></div><div class="ph2">(906) 000-0000 &middot; yourbusiness.com</div></div></div>
-            <div class="mockcap">Quadruple, 7.1" x 3.7"</div>
-          </div>
+          <figure class="bestad"><button type="button" class="exb" data-expand aria-label="Open Shiba Cafe quad ad full size"><img src="img/ads/quad-shiba-cafe.webp" alt="Shiba Cafe quad ad" loading="lazy"></button><figcaption>Real quadruple, 7.1" x 3.7"</figcaption></figure>
+          
         </div>
       </article>
 
