@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marquette Postcard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: lake-blue hero, one huge rust offer banner, the card mockup, then one row per ad size (price per household leads). */
+:root {
+  --bg: #F4F7F9;
+  --surface: #FFFFFF;
+  --ink: #0E2433;
+  --muted: #455B6B;
+  --line: #D3DEE5;
+  --lake: #14506E;
+  --hero-bg: #0B3047;
+  --hero-ink: #F4F7F9;
+  --hero-muted: #B7CAD6;
+  --rust: #B8421F;
+  --rust-ink: #FFFFFF;
+  --hi: #FFD43B;
+  --hi-ink: #1A1400;
+  --paper: #FFFFFF;
+  --paper-ink: #14202B;
+  --paper-line: #B9C6D0;
+  --cell: #E3EAEF;
+  --cell-line: #C6D3DC;
+  --c-coupon: #E8A317;
+  --c-single: #6FA82B;
+  --c-double: #1F9BC4;
+  --c-quad: #7A4FD0;
+  --sky: #46BDE8;
+  --sky-ink: #06202E;
+  --red: #C8141E;
+  --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #09171F; --surface: #0F202B; --ink: #E8F0F5; --muted: #9DB2C0; --line: #243847;
+    --lake: #7DBBDB; --hero-bg: #0C2A3C; --rust: #E2603A; --rust-ink: #1A0A04;
+    --cell: #1B3040; --cell-line: #2A4256; --red: #FF6A61;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #09171F; --surface: #0F202B; --ink: #E8F0F5; --muted: #9DB2C0; --line: #243847;
+  --lake: #7DBBDB; --hero-bg: #0C2A3C; --rust: #E2603A; --rust-ink: #1A0A04;
+  --cell: #1B3040; --cell-line: #2A4256; --red: #FF6A61;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.55; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.02; letter-spacing: 0.005em; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1040px; margin-inline: auto; }
+.label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lake); }
+
+/* top bar */
+.topbar { background: var(--hero-bg); color: var(--hero-ink); border-bottom: 1px solid rgba(255,255,255,0.12); }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; flex-wrap: wrap; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; }
+.topbar a { font-weight: 600; font-size: 15px; text-decoration: none; background: var(--hi); color: var(--hi-ink); padding: 6px 12px; border-radius: 4px; white-space: nowrap; }
+
+/* hero */
+.hero { background: var(--hero-bg); color: var(--hero-ink); }
+.hero .wrap { padding-block: 44px 40px; }
+.hero h1 { font-size: clamp(40px, 7.5vw, 80px); text-transform: uppercase; max-width: 13em; }
+.hero h1 em { font-style: normal; color: var(--hi); }
+.hero .sub { margin-top: 18px; font-size: 19px; color: var(--hero-muted); max-width: 36em; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; font: 700 18px var(--font-body); border-radius: 6px; text-decoration: none; border: 2px solid transparent; cursor: pointer; text-align: center; }
+.btn.primary { background: var(--rust); color: var(--rust-ink); }
+.btn.ghost { border-color: rgba(255,255,255,0.45); color: var(--hero-ink); }
+.btn.dark { background: var(--ink); color: var(--bg); }
+.btn.line { border-color: var(--ink); color: var(--ink); }
+.btn.sm { min-height: 46px; font-size: 16px; padding: 0 18px; }
+.btn:focus-visible, summary:focus-visible, .copy:focus-visible, a:focus-visible, .frame:focus-visible, .lb button:focus-visible { outline: 3px solid var(--hi); outline-offset: 2px; }
+.numline { margin-top: 14px; font-size: 16px; color: var(--hero-muted); }
+.numline strong { color: var(--hi-ink); background: var(--hi); padding: 1px 8px; border-radius: 3px; font-size: 18px; white-space: nowrap; }
+.copy { margin-left: 8px; background: none; border: 1px solid rgba(255,255,255,0.4); color: var(--hero-ink); font: 600 13px var(--font-body); border-radius: 4px; padding: 4px 10px; cursor: pointer; }
+
+/* the big offer headline */
+.offer { background: var(--surface); border-bottom: 1px solid var(--line); }
+.gos { background: var(--sky); color: var(--sky-ink); }
+.gos .wrap { text-align: center; padding-block: 10px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; font-size: min(7vw, 32px); line-height: 1.1; }
+.offer-main { text-align: center; padding-block: 22px 28px; }
+.offer .huge { font-family: var(--font-display); font-weight: 700; color: var(--red); font-size: min(21vw, 200px); line-height: 0.86; white-space: nowrap; text-transform: uppercase; }
+.offer .anysize { font-family: var(--font-display); font-weight: 700; color: var(--ink); font-size: min(14vw, 80px); line-height: 1; margin-top: 8px; white-space: nowrap; letter-spacing: 0.03em; text-transform: uppercase; }
+.offer .line2 { margin-top: 14px; font-size: 16px; color: var(--muted); font-weight: 600; }
+
+.facts { background: var(--surface); border-bottom: 1px solid var(--line); }
+.facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.fact { padding: 18px 16px; border-left: 1px solid var(--line); min-width: 0; }
+.fact:first-child { border-left: 0; padding-left: 0; }
+.fact b { display: block; font-family: var(--font-display); font-size: 28px; line-height: 1; text-transform: uppercase; }
+.fact span { font-size: 14px; color: var(--muted); }
+
+section.s { padding-block: 56px 8px; }
+.s h2 { font-size: clamp(34px, 5.5vw, 52px); text-transform: uppercase; margin-top: 8px; }
+.s .lead { margin-top: 14px; max-width: 40em; color: var(--muted); font-size: 18px; }
+
+/* mockup frame */
+.frame { display: block; width: 100%; margin-top: 24px; padding: 0; border: 2px dashed var(--line); background: var(--surface); border-radius: 10px; cursor: default; color: var(--muted); font: 600 16px var(--font-body); min-height: 340px; position: relative; overflow: hidden; }
+.frame.has-img { border: 1px solid var(--line); cursor: zoom-in; }
+.frame img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: contain; }
+.frame .ph { display: grid; place-content: center; text-align: center; gap: 6px; min-height: 340px; padding: 24px; }
+.frame .ph b { font-family: var(--font-display); font-size: 30px; text-transform: uppercase; color: var(--ink); }
+.zoomhint { margin-top: 8px; font-size: 14px; color: var(--muted); }
+
+/* grand opening list */
+.open { margin-top: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.open h3 { font-size: 30px; text-transform: uppercase; }
+.open p + p { margin-top: 12px; }
+.open ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 12px; }
+.open li b { font-size: 18px; }
+.open li span { color: var(--muted); }
+
+/* ad size rows */
+.sizes { margin-top: 30px; display: grid; gap: 22px; }
+/* sizes layout: text and ads on the left, one sticky card on the right */
+.chips { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips a { text-decoration: none; font-weight: 700; font-size: 15px; padding: 9px 14px; border: 2px solid var(--ink); border-radius: 999px; }
+.sizes-layout { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 32px; align-items: start; }
+.sizes-layout .sizes { margin-top: 0; }
+.stick { position: sticky; top: 20px; }
+.stick-cap { font-family: var(--font-display); font-weight: 700; font-size: 26px; text-transform: uppercase; color: var(--lake); line-height: 1.05; margin-bottom: 10px; }
+.bigcard { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, 1fr); gap: 5px; padding: 10px; aspect-ratio: 11 / 14; background: var(--paper); border: 1.5px solid var(--paper-line); box-shadow: 0 8px 22px rgba(8,30,45,0.16); }
+.bigcard .c { background: var(--cell); border: 1px solid var(--cell-line); }
+.bigcard .hit { z-index: 1; opacity: 0; transition: opacity 0.25s; border: 2px solid rgba(0,0,0,0.3); display: grid; place-content: center; font: 700 12px var(--font-body); color: #fff; letter-spacing: 0.06em; text-transform: uppercase; }
+.stick[data-active="coupon"] .hit[data-for~="coupon"],
+.stick[data-active="single"] .hit[data-for~="single"],
+.stick[data-active="double"] .hit[data-for~="double"],
+.stick[data-active="quad"] .hit[data-for~="quad"] { opacity: 1; }
+.stick-note { margin-top: 8px; font-size: 13px; color: var(--muted); }
+@media (min-width: 861px) { .mini { display: none; } }
+
+.size { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "info" "visual"; gap: 22px; align-items: start; scroll-margin-top: 16px; }
+.size .info { grid-area: info; min-width: 0; }
+.size .visual { grid-area: visual; display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end; min-width: 0; }
+.size h3 { font-size: 30px; text-transform: uppercase; color: var(--lake); }
+.dims { font-size: 15px; color: var(--muted); margin-top: 4px; }
+.hhbig { margin-top: 14px; font-family: var(--font-display); font-weight: 700; font-size: 84px; line-height: 0.86; color: var(--rust); }
+.hhbig span { font-size: 28px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.02em; margin-left: 6px; }
+.price2 { margin-top: 10px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.price2 b { font-size: 30px; font-weight: 700; }
+.price2 s { font-size: 20px; color: var(--muted); text-decoration-thickness: 2px; }
+.price2 small { flex-basis: 100%; font-size: 14px; color: var(--muted); }
+.fit { margin-top: 12px; color: var(--muted); font-size: 16px; }
+.size .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* mini card showing where the spot sits */
+.mini { width: 104px; flex: none; }
+.mini .card { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, 1fr); gap: 3px; padding: 5px; aspect-ratio: 11 / 14; background: var(--paper); border: 1.5px solid var(--paper-line); box-shadow: 0 6px 14px rgba(8,30,45,0.12); position: relative; }
+.mini .c { background: var(--cell); border: 1px solid var(--cell-line); }
+.mini .hit { z-index: 1; border: 1.5px solid rgba(0,0,0,0.25); }
+.mini .cap { margin-top: 6px; font-size: 12px; line-height: 1.25; color: var(--muted); }
+
+/* to-scale sample ads: 1 inch = 76px */
+.ad { --in: 76px; background: var(--paper); color: var(--paper-ink); border: 1.5px solid var(--paper-line); width: min(100%, var(--w)); aspect-ratio: var(--ratio); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 6px 14px rgba(8,30,45,0.12); font-family: var(--font-body); }
+.ad .tag { font: 700 10px var(--font-body); letter-spacing: 0.1em; text-transform: uppercase; color: #fff; padding: 3px 8px; }
+.ad .body { flex: 1; padding: 8px 10px; display: flex; flex-direction: column; justify-content: center; gap: 3px; min-height: 0; }
+.ad .nm { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1; text-transform: uppercase; }
+.ad .ln { font-size: 11px; line-height: 1.3; color: #3C4C5A; }
+.ad .off { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1; }
+.ad .ph2 { font-size: 11px; font-weight: 700; }
+.ad.coupon { --w: calc(var(--in) * 3.5); --ratio: 3.5 / 1.8; border-style: dashed; }
+.ad.coupon .tag { background: var(--c-coupon); }
+.ad.single { --w: calc(var(--in) * 3.5); --ratio: 3.5 / 1.8; }
+.ad.single .tag { background: var(--c-single); }
+.ad.dh { --w: calc(var(--in) * 7.123); --ratio: 7.123 / 1.8; }
+.ad.dv { --w: calc(var(--in) * 3.5); --ratio: 3.5 / 3.727; }
+.ad.quad { --w: calc(var(--in) * 7.123); --ratio: 7.123 / 3.727; }
+.ad.dh .tag, .ad.dv .tag { background: var(--c-double); }
+.ad.quad .tag { background: var(--c-quad); }
+.ad .row { display: flex; gap: 10px; align-items: center; }
+.ad .logo { flex: none; width: 44px; height: 44px; border: 1.5px solid var(--paper-line); display: grid; place-content: center; font: 700 9px var(--font-body); color: #5B6B78; text-align: center; line-height: 1.1; }
+.ad .photo { flex: 1; min-height: 40px; border: 1.5px solid var(--paper-line); background: repeating-linear-gradient(135deg, #E6EDF2 0 8px, #F3F7FA 8px 16px); display: grid; place-content: center; font: 700 10px var(--font-body); color: #5B6B78; letter-spacing: 0.08em; text-transform: uppercase; }
+.ad.quad .nm, .ad.dv .nm { font-size: 26px; }
+.ad.quad .off { font-size: 40px; }
+.mockwrap { min-width: 0; }
+.mockcap { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+/* big call to action */
+.cta-big { margin-top: 56px; background: var(--hero-bg); color: var(--hero-ink); }
+.cta-big .wrap { padding-block: 48px 52px; }
+.cta-big h2 { font-size: clamp(36px, 6.5vw, 68px); text-transform: uppercase; max-width: 14em; }
+.cta-big p { margin-top: 12px; color: var(--hero-muted); font-size: 19px; max-width: 36em; }
+.cta-big .cta-row { margin-top: 24px; }
+.cta-big .btn { min-height: 60px; font-size: 20px; padding: 0 30px; }
+
+/* compare */
+.compare { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.cbox { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 24px; }
+.cbox.win { border: 2px solid var(--rust); }
+.cbox h3 { font-size: 26px; text-transform: uppercase; }
+.cbox .n { font-family: var(--font-display); font-weight: 700; font-size: 64px; line-height: 0.95; margin-top: 10px; }
+.cbox .n span { font-size: 26px; text-transform: uppercase; margin-left: 6px; }
+.cbox.win .n { color: var(--rust); }
+.cbox .tot { margin-top: 8px; font-weight: 700; font-size: 18px; }
+.cbox p { margin-top: 8px; color: var(--muted); font-size: 16px; }
+
+/* lists, steps, gallery */
+.cols { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 40px; }
+.item h3 { font-size: 24px; text-transform: uppercase; color: var(--lake); }
+.item p { margin-top: 6px; color: var(--muted); font-size: 16px; }
+.steps { margin: 28px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: st; }
+.steps li { counter-increment: st; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+.steps li::before { content: counter(st); font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1; color: var(--rust); display: block; }
+.steps b { display: block; font-family: var(--font-display); font-size: 24px; text-transform: uppercase; margin-top: 6px; }
+.steps span { color: var(--muted); font-size: 16px; display: block; margin-top: 4px; }
+.gallery { margin-top: 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.tile { margin: 0; min-width: 0; }
+.tile .frame { margin-top: 0; min-height: 0; aspect-ratio: 11 / 14; }
+.tile .frame .ph { min-height: 0; height: 100%; padding: 12px; }
+.tile .frame .ph b { font-size: 20px; }
+.tile figcaption { margin-top: 6px; font-size: 14px; color: var(--muted); }
+.about { margin-top: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; max-width: 760px; }
+.about p + p { margin-top: 12px; }
+details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+summary { cursor: pointer; font-weight: 700; font-size: 18px; }
+details p { margin-top: 8px; color: var(--muted); }
+.faq { margin-top: 20px; max-width: 760px; border-top: 1px solid var(--line); }
+footer { padding-block: 22px; font-size: 14px; color: var(--muted); }
+
+/* lightbox */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(4,14,21,0.92); display: none; align-items: center; justify-content: center; padding: env(safe-area-inset-top, 0px) max(12px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(12px, env(safe-area-inset-left, 0px)); }
+.lb.on { display: flex; }
+.lb img { max-width: 100%; max-height: 92vh; object-fit: contain; }
+.lb button { position: absolute; top: calc(10px + env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); min-height: 44px; padding: 0 18px; font: 700 16px var(--font-body); border-radius: 6px; border: 0; background: var(--hi); color: var(--hi-ink); cursor: pointer; }
+
+
+/* deadline countdown */
+.deadline { background: var(--hi); color: var(--hi-ink); }
+.deadline .wrap { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; justify-content: center; padding-block: 9px; text-align: center; }
+.dl-label { font-weight: 700; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; }
+.dl-time { font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1; font-variant-numeric: tabular-nums; }
+.about-row { margin-top: 28px; display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+.about-row .about { margin-top: 0; flex: 1 1 340px; }
+.photo-slot { flex: 0 0 200px; width: 200px; max-width: 100%; aspect-ratio: 4 / 5; border: 2px dashed var(--line); border-radius: 10px; background: var(--surface); display: grid; place-content: center; text-align: center; color: var(--muted); font-weight: 600; font-size: 15px; overflow: hidden; }
+.photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.sticky { display: none; }
+
+@media (max-width: 860px) {
+  .open, .size, .compare, .cols, .steps { grid-template-columns: 1fr; }
+  .sizes-layout { grid-template-columns: 1fr; }
+  .stick { display: none; }
+  .size { padding: 18px; }
+  .facts .wrap { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(3) { border-left: 0; padding-left: 0; }
+  .fact { border-top: 1px solid var(--line); }
+  .fact:nth-child(-n+2) { border-top: 0; }
+  .open, .about { padding: 20px; }
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .hhbig { font-size: 72px; }
+}
+@media (max-width: 720px) {
+  body { padding-bottom: 84px; }
+  .sticky { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--surface); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  .sticky a { flex: 1; min-height: 48px; display: flex; align-items: center; justify-content: center; font-weight: 700; border-radius: 6px; text-decoration: none; text-align: center; line-height: 1.1; }
+  .sticky .t { background: var(--rust); color: var(--rust-ink); }
+  .sticky .c { border: 2px solid var(--ink); flex: 0 0 34%; }
+  .topbar a { display: none; }
+  .hero .wrap { padding-block: 32px 30px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+</style>
+
+<div class="deadline band" id="dl">
+  <div class="wrap"><span class="dl-label">Ad deadline: Tuesday, November 10</span><span class="dl-time" id="dlt">&nbsp;</span></div>
+</div>
+
+</head>
+<body>
+<header class="topbar band">
+  <div class="wrap">
+    <span class="brand">Marquette Postcard</span>
+    <a href="sms:+19062990083">Text Russell: (906) 299-0083</a>
+  </div>
+</header>
+
+<section class="hero band">
+  <div class="wrap">
+    <p class="label" style="color: var(--hero-muted)">Mails first week of December &middot; One business per category</p>
+    <h1 style="margin-top:10px">Your ad in <em>10,000</em> Marquette mailboxes this holiday season</h1>
+    <p class="sub">One giant postcard packed with local deals. Spots start at about 3 cents per household, and only one business per category gets on the card.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request a free mockup</a>
+      <a class="btn ghost" href="sms:+19062990083">Text Russell</a>
+    </div>
+    <p class="numline">Or call or text: <strong id="num">(906) 299-0083</strong><button class="copy" id="copy" type="button">Copy number</button></p>
+  </div>
+</section>
+
+<section class="offer" aria-label="Grand opening special">
+  <div class="gos band"><div class="wrap">Grand opening special</div></div>
+  <div class="band"><div class="wrap offer-main">
+    <p class="huge">$200 off</p>
+    <p class="anysize">Any ad size</p>
+    <p class="line2">Our first Marquette card &middot; One business per category &middot; Spots are limited</p>
+  </div></div>
+</section>
+
+<div class="facts band">
+  <div class="wrap">
+    <div class="fact"><b>11x14 or 9x12</b><span>Oversized, full color both sides</span></div>
+    <div class="fact"><b>About 10,000</b><span>Homes on the selected Marquette routes</span></div>
+    <div class="fact"><b>1 per category</b><span>One roofer, one dentist, one pizza place</span></div>
+    <div class="fact"><b>Design included</b><span>Printing, postage and paperwork too</span></div>
+  </div>
+</div>
+
+<section class="s band" id="card">
+  <div class="wrap">
+    <p class="label">See the card</p>
+    <h2>This is what lands in the mailbox</h2>
+    <p class="lead">It will be an 11x14 or a 9x12, depending on how many advertisers sign up. Either one is enormous and stands out in the mailbox over any other piece of mail. Tap the picture to open it full screen.</p>
+    <button class="frame" type="button" data-expand aria-label="Marquette card mockup">
+      <!--MOCKUP-->
+      <span class="ph"><b>Marquette card mockup</b><span>Your mockup image goes here</span></span>
+      <!--/MOCKUP-->
+    </button>
+  </div>
+</section>
+
+<section class="s band" id="special">
+  <div class="wrap">
+    <p class="label">Grand opening special</p>
+    <h2>$200 off every ad size, because this is our first Marquette card</h2>
+    <div class="open">
+      <div>
+        <h3>Why the discount</h3>
+        <p>We have mailed five co-op postcards in Houghton County, and our sixth, the holiday card, is on the way. Marquette is next, and the first businesses on the card get the best price we will ever offer here.</p>
+        <p>The $200 off applies to every ad size on this first Marquette card only. It will not be on the next one.</p>
+      </div>
+      <div>
+        <h3>What it means for you</h3>
+        <ul>
+          <li><b>Coupon ad: $300</b> <span>(3&cent; per household) instead of $500</span></li>
+          <li><b>Single ad: $500</b> <span>(5&cent; per household) instead of $700</span></li>
+          <li><b>Double ad: $1,000</b> <span>(10&cent; per household) instead of $1,200</span></li>
+          <li><b>Quadruple ad: $2,200</b> <span>(22&cent; per household) instead of $2,400</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s band" id="sizes">
+  <div class="wrap">
+    <p class="label">Pick your ad size</p>
+    <h2>Four sizes, priced per household</h2>
+    <p class="lead">Every price is for the whole card: about 10,000 Marquette households, with design, printing and postage included. Sample ads are drawn to scale, and the small card shows where each size sits.</p>
+
+    <div class="chips" aria-label="Jump to an ad size"><a href="#size-coupon" data-jump="size-coupon">Coupon &middot; 3&cent;</a><a href="#size-single" data-jump="size-single">Single &middot; 5&cent;</a><a href="#size-double" data-jump="size-double">Double &middot; 10&cent;</a><a href="#size-quad" data-jump="size-quad">Quadruple &middot; 22&cent;</a></div>
+    <div class="sizes-layout">
+    <div class="sizes">
+
+      <article class="size" id="size-coupon" data-size="coupon">
+        <div class="info">
+          <h3>Coupon ad</h3>
+          <p class="dims">3.5" x 1.8" &middot; takes 1 spot</p>
+          <div class="hhbig">3&cent;<span>per household</span></div>
+          <div class="price2"><b>$300</b><s>$500</s><small>Grand opening price, about 10,000 homes</small></div>
+          <p class="fit">A clear offer people clip and bring in. Good for restaurants, shops, salons and anyone who wants to see who walked in with the card.</p>
+          <div class="btns"><a class="btn sm dark" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request a free mockup</a><a class="btn sm line" href="sms:+19062990083">Text Russell</a></div>
+        </div>
+        <div class="visual">
+          <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 1;grid-row:3/span 1;background:var(--c-coupon)"></div></div><div class="cap">Where a coupon sits (example layout)</div></div>
+          <div class="mockwrap">
+            <div class="ad coupon"><div class="tag">Coupon</div><div class="body"><div class="nm">Your Business</div><div class="off">10% OFF</div><div class="ln">Show this card at checkout.</div></div></div>
+            <div class="mockcap">Sample coupon, 3.5" x 1.8"</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="size" id="size-single" data-size="single">
+        <div class="info">
+          <h3>Single ad</h3>
+          <p class="dims">3.5" x 1.8" &middot; business card size &middot; takes 1 spot</p>
+          <div class="hhbig">5&cent;<span>per household</span></div>
+          <div class="price2"><b>$500</b><s>$700</s><small>Grand opening price, about 10,000 homes</small></div>
+          <p class="fit">Your logo, services and phone number, sitting where people keep the card all season. Good for trades, offices and professional services.</p>
+          <div class="btns"><a class="btn sm dark" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request a free mockup</a><a class="btn sm line" href="sms:+19062990083">Text Russell</a></div>
+        </div>
+        <div class="visual">
+          <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:2/span 1;grid-row:3/span 1;background:var(--c-single)"></div></div><div class="cap">Where a single sits (example layout)</div></div>
+          <div class="mockwrap">
+            <div class="ad single"><div class="tag">Single ad</div><div class="body"><div class="row"><div class="logo">YOUR<br>LOGO</div><div><div class="nm">Your Business</div><div class="ln">What you do, in one line.</div></div></div><div class="ph2">(906) 000-0000</div></div></div>
+            <div class="mockcap">Sample business card ad, 3.5" x 1.8"</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="size" id="size-double" data-size="double">
+        <div class="info">
+          <h3>Double ad</h3>
+          <p class="dims">7.2" x 1.8" or 3.5" x 3.8" &middot; takes 2 spots</p>
+          <div class="hhbig">10&cent;<span>per household</span></div>
+          <div class="price2"><b>$1,000</b><s>$1,200</s><small>Grand opening price, about 10,000 homes</small></div>
+          <p class="fit">Twice the space for a bigger message. Choose wide or tall. Good for contractors, health and wellness, real estate and anyone with several services to show.</p>
+          <div class="btns"><a class="btn sm dark" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request a free mockup</a><a class="btn sm line" href="sms:+19062990083">Text Russell</a></div>
+        </div>
+        <div class="visual">
+          <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 2;grid-row:3/span 1;background:var(--c-double)"></div></div><div class="cap">Wide double (example layout)</div></div>
+          <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 1;grid-row:3/span 2;background:var(--c-double)"></div></div><div class="cap">Tall double (example layout)</div></div>
+          <div class="mockwrap">
+            <div class="ad dh"><div class="tag">Double ad, horizontal</div><div class="body"><div class="row"><div class="logo">YOUR<br>LOGO</div><div><div class="nm">Your Business Name</div><div class="ln">Your services, your promise and your offer, with room to say more.</div></div><div class="off" style="margin-left:auto">$25 OFF</div></div><div class="ph2">(906) 000-0000 &middot; yourbusiness.com</div></div></div>
+            <div class="mockcap">Horizontal, 7.2" x 1.8"</div>
+          </div>
+          <div class="mockwrap">
+            <div class="ad dv"><div class="tag">Double ad, vertical</div><div class="body"><div class="logo">YOUR LOGO</div><div class="nm">Your Business</div><div class="ln">Room for a photo, a short list of services and a strong offer.</div><div class="off">$25 OFF</div><div class="ph2">(906) 000-0000</div></div></div>
+            <div class="mockcap">Vertical, 3.5" x 3.8"</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="size" id="size-quad" data-size="quad">
+        <div class="info">
+          <h3>Quadruple ad</h3>
+          <p class="dims">7.1" x 3.7" &middot; takes 4 spots</p>
+          <div class="hhbig">22&cent;<span>per household</span></div>
+          <div class="price2"><b>$2,200</b><s>$2,400</s><small>Grand opening price, about 10,000 homes</small></div>
+          <p class="fit">The headline ad and the largest space on the card. Good for dealerships, home improvement, big seasonal promotions and category leaders.</p>
+          <div class="btns"><a class="btn sm dark" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request a free mockup</a><a class="btn sm line" href="sms:+19062990083">Text Russell</a></div>
+        </div>
+        <div class="visual">
+          <div class="mini"><div class="card" aria-hidden="true"><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="hit" style="grid-column:1/span 2;grid-row:3/span 2;background:var(--c-quad)"></div></div><div class="cap">Where a quadruple sits (example layout)</div></div>
+          <div class="mockwrap">
+            <div class="ad quad"><div class="tag">Quadruple ad</div><div class="body"><div class="row"><div class="logo">YOUR<br>LOGO</div><div><div class="nm">Your Business Name</div><div class="ln">The biggest ad on the card, with space for photos, services and an offer.</div></div></div><div class="row"><div class="photo">Your photo</div><div class="off">$50 OFF</div></div><div class="ph2">(906) 000-0000 &middot; yourbusiness.com</div></div></div>
+            <div class="mockcap">Quadruple, 7.1" x 3.7"</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+<aside class="stick" id="stick" data-active="coupon" aria-label="Where each ad size sits on the card"><div class="stick-in"><p class="stick-cap" id="stickcap">Coupon · 1 spot</p><div class="bigcard" aria-hidden="true"><div class="c" style="grid-area:1/1/2/2"></div><div class="c" style="grid-area:1/2/2/3"></div><div class="c" style="grid-area:1/3/2/4"></div><div class="c" style="grid-area:2/1/3/2"></div><div class="c" style="grid-area:2/2/3/3"></div><div class="c" style="grid-area:2/3/3/4"></div><div class="c" style="grid-area:3/1/4/2"></div><div class="c" style="grid-area:3/2/4/3"></div><div class="c" style="grid-area:3/3/4/4"></div><div class="c" style="grid-area:4/1/5/2"></div><div class="c" style="grid-area:4/2/5/3"></div><div class="c" style="grid-area:4/3/5/4"></div><div class="c" style="grid-area:5/1/6/2"></div><div class="c" style="grid-area:5/2/6/3"></div><div class="c" style="grid-area:5/3/6/4"></div><div class="c" style="grid-area:6/1/7/2"></div><div class="c" style="grid-area:6/2/7/3"></div><div class="c" style="grid-area:6/3/7/4"></div><div class="c" style="grid-area:7/1/8/2"></div><div class="c" style="grid-area:7/2/8/3"></div><div class="c" style="grid-area:7/3/8/4"></div><div class="hit" data-for="coupon" style="grid-area:3/1/4/2;background:var(--c-coupon)"></div><div class="hit" data-for="single" style="grid-area:3/2/4/3;background:var(--c-single)"></div><div class="hit" data-for="double" style="grid-area:3/1/4/3;background:var(--c-double)">Wide</div><div class="hit" data-for="double" style="grid-area:3/3/5/4;background:var(--c-double)">Tall</div><div class="hit" data-for="quad" style="grid-area:3/1/5/3;background:var(--c-quad)"></div></div><p class="stick-note">Example layout. Your card may be arranged differently.</p></div></aside>
+    </div>
+  </div>
+</section>
+
+<section class="cta-big band" id="mockup">
+  <div class="wrap">
+    <h2>Request a free mockup, or see if your category is still open</h2>
+    <p>Tell me your business and category. I will check that it is available and design your ad for free. You see it before anything prints.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request my free mockup</a>
+      <a class="btn ghost" href="sms:+19062990083">Text to check my category</a>
+    </div>
+    <p class="numline" style="margin-top:16px">Call or text: <strong>(906) 299-0083</strong></p>
+  </div>
+</section>
+
+<section class="s band" id="why">
+  <div class="wrap">
+    <p class="label">Why a shared card</p>
+    <h2>Mailing on your own costs 60 cents to $1.00 per household</h2>
+    <p class="lead">Postage alone is 26 cents per household before you pay for printing and design. On a co-op card you split the cost with other local businesses and get the same reach.</p>
+    <div class="compare">
+      <div class="cbox">
+        <h3>Mailing on your own</h3>
+        <div class="n">60&cent;+<span>per household</span></div>
+        <p class="tot">$6,000 to $10,000+ for 10,000 homes</p>
+        <p>Printing, postage and design, and your postcard sits alone in the mail pile.</p>
+      </div>
+      <div class="cbox win">
+        <h3>On this card</h3>
+        <div class="n">From 3&cent;<span>per household</span></div>
+        <p class="tot">From $300, everything included</p>
+        <p>People keep a card full of local deals on the fridge for months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s band" id="where">
+  <div class="wrap">
+    <p class="label">Where it goes</p>
+    <h2>Every home on the selected Marquette routes</h2>
+    <div class="cols">
+      <div class="item"><h3>About 10,000 households</h3><p>Delivered by USPS Every Door Direct Mail, so it reaches every address on each carrier route, not a purchased list.</p></div>
+      <div class="item"><h3>Stronger-income neighborhoods</h3><p>We picked the routes with the strongest household incomes in Marquette. Average household income across the selected routes is about $77,000, based on USPS data.</p></div>
+      <div class="item"><h3>The biggest piece of mail</h3><p>An oversized card is larger than anything else in the mailbox, with full color on both sides and a high gloss finish.</p></div>
+      <div class="item"><h3>No competitors on the card</h3><p>One business per category. If you are the plumber on the card, no other plumber gets on.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s band" id="past">
+  <div class="wrap">
+    <p class="label">Our track record</p>
+    <h2>Cards we have mailed together</h2>
+    <p class="lead">Five co-op postcards mailed across Houghton County, and the sixth is on the way. Tap a card to see it full size.</p>
+    <div class="gallery">
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Past card"><!--PAST1--><span class="ph"><b>Past card</b><span>Front</span></span><!--/PAST1--></button><figcaption>Houghton County card, front</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Past card back"><!--PAST2--><span class="ph"><b>Past card</b><span>Back</span></span><!--/PAST2--></button><figcaption>Houghton County card, back</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Summer card"><!--PAST3--><span class="ph"><b>Summer card</b><span>Photo</span></span><!--/PAST3--></button><figcaption>Summer card</figcaption></figure>
+      <figure class="tile"><button class="frame" type="button" data-expand aria-label="Fall card"><!--PAST4--><span class="ph"><b>Fall card</b><span>Photo</span></span><!--/PAST4--></button><figcaption>Fall card</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="s band" id="how">
+  <div class="wrap">
+    <p class="label">How it works</p>
+    <h2>Three steps, and I do the design</h2>
+    <ol class="steps">
+      <li><b>Request your mockup</b><span>Tell me your category. I check that it is open and design your ad for free.</span></li>
+      <li><b>Approve your ad</b><span>Ask for changes until you like it. Nothing prints without your OK.</span></li>
+      <li><b>It hits 10,000 mailboxes</b><span>Cards mail the first week of December, right for holiday shopping.</span></li>
+    </ol>
+    <p class="lead" style="margin-top:22px">Cards go to the printer in mid-November, so the sooner you reach out, the more time we have to get your ad right.</p>
+  </div>
+</section>
+
+
+
+<section class="s band" id="faq">
+  <div class="wrap">
+    <p class="label">Questions</p>
+    <h2>Good to know</h2>
+    <div class="faq">
+      <details><summary>What is the free mockup?</summary><p>I design your ad for free, using your logo, your offer and your info, so you can see exactly how it will look on the card. You can ask for changes, and you only pay once you are happy with it.</p></details>
+      <details><summary>How do I get a mockup or check my category?</summary><p>Tap Request a free mockup, or text me your business name and category. I will check that your category is open and get your ad started.</p></details>
+      <details><summary>Is the $200 off permanent?</summary><p>No. This is our grand opening special for Marquette, and it is only for this first card.</p></details>
+      <details><summary>Will it be 11x14 or 9x12?</summary><p>That depends on how many advertisers sign up. Either size is enormous and stands out in the mailbox over any other piece of mail they get. It is printed in full color on both sides, and your ad size, your price and the number of homes mailed stay the same.</p></details>
+      <details><summary>How many ads are on the card?</summary><p>The 11x14 card has 41 spots, and a 9x12 has 23. With a mix of ad sizes there are usually about 25 businesses on an 11x14 card.</p></details>
+      <details><summary>What if my category is taken?</summary><p>Text me anyway. I will put you first in line if it opens up, or for the next card.</p></details>
+      <details><summary>Who designs my ad?</summary><p>I do, and design is included. You can also send your own design. Usually I only need your offer, and I can pull your logo and info from your website or social media.</p></details>
+      <details><summary>Do I need a coupon?</summary><p>Not required, but an offer works best. Something like "mention this card for 10% off" brings in new customers and makes it easy to see what the card is doing for you.</p></details>
+      <details><summary>How do I pay?</summary><p>Cash, check or credit card. Checks are payable to Support the UP. Your spot is locked in once payment is received. Payment plans are available through Afterpay, with payments over 6 weeks and zero interest.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="s band" id="about">
+  <div class="wrap">
+    <p class="label">Who is behind it</p>
+    <h2>About Russell</h2>
+    <div class="about-row">
+      <div class="photo-slot"><!--PHOTO--><span>Your photo</span><!--/PHOTO--></div>
+      <div class="about">
+        <p>I'm Russell. I run Support the UP, a local co-op postcard business based in the Houghton area. We have mailed five postcards across Houghton County, and the sixth, our holiday card, is in the works.</p>
+        <p>Marquette is our next stop, and I'm doing this one the same way: you get a free mockup, one business per category, and I handle the design, printing, postage and post office paperwork. Texting me is the fastest way to reach me.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-big band" style="margin-top:56px">
+  <div class="wrap">
+    <h2>Is your category still open?</h2>
+    <p>Request your free mockup or text me your business and category.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request my free mockup</a>
+      <a class="btn ghost" href="sms:+19062990083">Text Russell</a>
+      <a class="btn ghost" href="tel:+19062990083">Call (906) 299-0083</a>
+    </div>
+  </div>
+</section>
+
+<footer class="band"><div class="wrap">Marquette Postcard &middot; Presented by Support the UP &middot; (906) 299-0083</div></footer>
+
+<nav class="sticky" aria-label="Contact Russell">
+  <a class="t" href="https://russellpriscosteamw6c809.myclickfunnels.com/bring-new-and-returning-customers-through-your-door" target="_blank" rel="noopener">Request free mockup</a>
+  <a class="c" href="sms:+19062990083">Text</a>
+</nav>
+
+<div class="lb" id="lb" role="dialog" aria-label="Expanded image"><button type="button" id="lbx">Close</button><img alt="" id="lbi"></div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var num = document.getElementById('num');
+  if (btn && num) {
+    btn.addEventListener('click', function () {
+      function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy number'; }, 1800); }
+      function fallback() {
+        try { var r = document.createRange(); r.selectNodeContents(num); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; } catch (e) {}
+      }
+      try { navigator.clipboard.writeText('(906) 299-0083').then(done, fallback); } catch (e) { fallback(); }
+    });
+  }
+  var lb = document.getElementById('lb'), lbi = document.getElementById('lbi'), lbx = document.getElementById('lbx');
+  var frames = document.querySelectorAll('[data-expand]');
+  for (var i = 0; i < frames.length; i++) {
+    (function (f) {
+      var img = f.querySelector('img');
+      if (img) { f.classList.add('has-img'); var ph = f.querySelector('.ph'); if (ph) ph.hidden = true; }
+      f.addEventListener('click', function () {
+        var im = f.querySelector('img');
+        if (!im) return;
+        lbi.src = im.currentSrc || im.src; lb.classList.add('on'); lbx.focus();
+      });
+    })(frames[i]);
+  }
+  function close() { lb.classList.remove('on'); lbi.removeAttribute('src'); }
+  lbx.addEventListener('click', close);
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+
+  // Sticky card follows whichever ad size is on screen.
+  var stick = document.getElementById('stick'), cap = document.getElementById('stickcap');
+  var caps = { coupon: 'Coupon \u00b7 1 spot', single: 'Single \u00b7 1 spot', double: 'Double \u00b7 2 spots', quad: 'Quadruple \u00b7 4 spots' };
+  var secs = document.querySelectorAll('.size[data-size]');
+  function setActive(k) { if (!stick) return; stick.setAttribute('data-active', k); if (cap) cap.textContent = caps[k]; }
+  if (stick && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) setActive(en.target.getAttribute('data-size')); });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+    for (var j = 0; j < secs.length; j++) io.observe(secs[j]);
+  }
+  var jumps = document.querySelectorAll('[data-jump]');
+  for (var q = 0; q < jumps.length; q++) {
+    jumps[q].addEventListener('click', function (e) {
+      e.preventDefault();
+      var el = document.getElementById(this.getAttribute('data-jump'));
+      if (el) el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    });
+  }
+
+  // Deadline countdown. Change the date on the next line to move it (Eastern time).
+  var DEADLINE = new Date('2026-11-10T23:59:59-05:00');
+  var dlt = document.getElementById('dlt');
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    if (!dlt) return;
+    var ms = DEADLINE.getTime() - Date.now();
+    if (isNaN(ms)) return;
+    if (ms <= 0) { dlt.textContent = 'Deadline has passed. Text to ask about last spots.'; return; }
+    var s = Math.floor(ms / 1000), d = Math.floor(s / 86400); s -= d * 86400;
+    var h = Math.floor(s / 3600); s -= h * 3600; var m = Math.floor(s / 60); s -= m * 60;
+    dlt.textContent = d + ' day' + (d === 1 ? '' : 's') + ' ' + pad(h) + ':' + pad(m) + ':' + pad(s) + ' left';
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
